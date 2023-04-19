@@ -1,16 +1,18 @@
+import { useSupabaseClient } from "@supabase/auth-helpers-react"
 
 export interface task {
     id: bigint,
     created_at: string,
     name: string,
     description: string,
-    label: Int8Array,
+    label: string,
   }
 
 function Task(task: task) {
+    const supabaseClient = useSupabaseClient()
 
-    const deleteTask = (id: bigint) => {
-        alert(id)
+    const deleteTask = async (id: bigint) => {
+        await supabaseClient.from('to-do').delete().eq('id', id)
     }
 
     return(
