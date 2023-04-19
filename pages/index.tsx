@@ -34,7 +34,7 @@ export default function Home() {
     setValues({...values, [e.currentTarget.name]:e.currentTarget.value})
   }
 
-  const addTask = async (e: SubmitEvent) => {
+  const addTask = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
     await supabaseClient.from('to-do').insert({
       name:values.name,
