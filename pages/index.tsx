@@ -2,13 +2,7 @@ import Task from "@/components/Task"
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 import { ChangeEvent, useEffect, useState } from 'react'
 
-export interface task {
-  id: bigint,
-  created_at: string,
-  name: string,
-  description: string,
-  label: string,
-}
+import { task } from "@/type"
 
 export default function Home() {
   const supabaseClient = useSupabaseClient()
@@ -20,11 +14,12 @@ export default function Home() {
     name: '',
     description: '',
     label: '',
+    uid: ''
   })
   
   useEffect(() => {
     async function loadData(){
-      const { data } = await supabaseClient.from('to-do').select('*')
+      const { data } = await supabaseClient.from('to-do').select('*').eq('uid', user?.id)
       setTasks(data as task[])
     }
     if(user) loadData()
@@ -36,11 +31,14 @@ export default function Home() {
 
   const addTask = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    await supabaseClient.from('to-do').insert({
-      name:values.name,
-      description:values.description,
-      label:values.label
-    })
+    if(user) {
+      await supabaseClient.from('to-do').insert({
+        name:values.name,
+        description:values.description,
+        label:values.label,
+        uid:user.id
+      })
+    }
   }
 
   if(!user) {

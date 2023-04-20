@@ -1,12 +1,5 @@
 import { useSupabaseClient } from "@supabase/auth-helpers-react"
-
-export interface task {
-    id: bigint,
-    created_at: string,
-    name: string,
-    description: string,
-    label: string,
-  }
+import { task } from "@/type"
 
 function Task(task: task) {
     const supabaseClient = useSupabaseClient()

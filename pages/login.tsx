@@ -3,14 +3,7 @@ import { Auth } from "@supabase/auth-ui-react";
 import { useEffect, useState } from "react";
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-export interface task {
-  id: bigint,
-  createdAt: Date,
-  name: string,
-  description: string,
-  label: Int8Array,
-}
-
+import { task } from "@/type";
 
 export default function login () {
     const supabaseClient = useSupabaseClient()
