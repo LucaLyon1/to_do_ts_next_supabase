@@ -21,22 +21,24 @@ export default function login () {
     
       if (!user)
         return (
-          <Auth
-            redirectTo="http://localhost:3000/"
-            appearance={{ theme: ThemeSupa }}
-            supabaseClient={supabaseClient}
-            providers={['google', 'github']}
-            socialLayout="horizontal"
-          />
+          <div className="w-1/3 m-auto mt-40 text-white">
+            <Auth
+              redirectTo="http://localhost:3000/"
+              appearance={{ theme: ThemeSupa }}
+              supabaseClient={supabaseClient}
+              providers={['google', 'github']}
+              socialLayout="horizontal"
+            />
+          </div>
         )
     
       return (
-        <>
+        <div className="w-1/3 m-auto">
           <button onClick={() => supabaseClient.auth.signOut()}>Sign out</button>
           <p>user:</p>
           <pre>{JSON.stringify(user, null, 2)}</pre>
           <p>client-side data fetching with RLS</p>
           <pre>{JSON.stringify(data, null, 2)}</pre>
-        </>
+        </div>
       )
 }

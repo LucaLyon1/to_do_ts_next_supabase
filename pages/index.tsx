@@ -50,14 +50,14 @@ export default function Home() {
   return(
     <div>
     <form action="" className="flex flex-col gap-4 w-1/4 m-auto mt-24">
-      <input className="bg-black border-white border-2 h-12 focus:border-gray-400 focus:outline-none" onChange={handleChange} type="text" name="name" id="name" value={values.name} />
-      <textarea className="bg-black border-white border-2 focus:border-gray-400 focus:outline-none" onChange={handleChange} name="description" id="desc" cols={30} rows={10} value={values.description} ></textarea>
-      <select className="bg-black border-white border-2 focus:border-gray-400 focus:outline-none" onChange={handleChange} name="label" id="label">
+      <input className="bg-white border-black border-2 h-12 focus:border-green-400 focus:outline-none p-4 rounded-md" onChange={handleChange} type="text" name="name" id="name" value={values.name} />
+      <textarea className="bg-white border-black border-2 focus:border-green-400 focus:outline-none p-4 rounded-md" onChange={handleChange} name="description" id="desc" cols={30} rows={10} value={values.description} ></textarea>
+      <select className="bg-white border-black border-2 h-12 focus:border-green-400 focus:outline-none px-4 rounded-md" onChange={handleChange} name="label" id="label">
         <option value="House">House</option>
         <option value="Work">Work</option>
         <option value="Sport">Sport</option>
       </select>
-      <button className="bg-black border-white border-2 hover:border-gray-400" onClick={addTask}>Add Task</button>
+      <button className="bg-white border-black border-2 hover:border-green-400 rounded-md" onClick={addTask}>Add Task</button>
     </form>
     {tasks && tasks.map((task, i: React.Key) => 
       <Task {...task} key={i}/>
