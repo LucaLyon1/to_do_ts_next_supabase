@@ -4,5 +4,4 @@ export interface task {
     name: string,
     description: string,
     label: string,
-    uid: string,
   }
