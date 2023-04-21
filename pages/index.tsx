@@ -22,7 +22,6 @@ export default function Home() {
       setTasks(data as task[])
     }
     loadData()
-    console.log('fast as fuck boiii')
   }, [])
 
   useEffect(() => {
